@@ -74,7 +74,7 @@ video  = Video(url = url)
 video.download(file_name='test.mp4')
 
 ```
-Download via Videos Class
+#### Download via Videos Class
 ```python
 from src.mytiktok.videos import Videos
 
