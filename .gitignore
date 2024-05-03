@@ -1,4 +1,5 @@
 Tests/
+src/__pycache__
 env/
 accounts/
 .vscode/
