@@ -1,0 +1,8 @@
+Test/
+env/
+accounts/
+.vscode/
+*.env
+*.pkl
+things to do.txt
+

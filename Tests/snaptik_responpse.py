@@ -1,0 +1,13 @@
+import requests
+
+url = 'https://d.rapidcdn.app/d?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJodHRwczovL2FwaTE2LW5vcm1hbC1jLXVzZWFzdDFhLnRpa3Rva3YuY29tL2F3ZW1lL3YxL3BsYXkvP3ZpZGVvX2lkPXYxMjA0NGdkMDAwMGNub3ZlcW5vZzY1bHYzaTZpNWowJmxpbmU9MCZpc19wbGF5X3VybD0xJnNvdXJjZT1BV0VNRV9ERVRBSUwmZmlsZV9pZD1iMjgyZDFmZDUwMzM0MzE1OTY0MDc5NmYyMjI4ZWI0MyZpdGVtX2lkPTczNDU5MjQ4NzUyMzc4NTQ1MDcmc2lnbmF0dXJldjM9ZG1sa1pXOWZhV1E3Wm1sc1pWOXBaRHRwZEdWdFgybGtMak0yTURVd1pXUXhPVGRoT0dJNE9HSTVNVFpsTVdRelpUY3pPVFV6TURNeSIsImZpbGVuYW1lIjoiU25hcHRpay5hcHBfNzM0NTkyNDg3NTIzNzg1NDUwNy5tcDQiLCJoZWFkZXJzIjp7InVzZXItYWdlbnQiOiJUZWxlZ3JhbUJvdCAobGlrZSBUd2l0dGVyQm90KSJ9fQ.H9CSH8jfr8VXY8OaIHBe0RVgql95s3A4JMGEKcYQcpc&dl=1'
+response  = requests.get(url , stream=True)
+
+# print(response.headers)
+# print(response.content)
+
+
+
+
+
+# //a[@class="button download-file"]

@@ -57,13 +57,13 @@ print(video.info_list)
 ```
 ### Downloading Videos
 
-Downloads videos via Search  or Accounts
+##### Downloads videos via Search  or Accounts
 
 ```python         
 videos.download(folder_name = 'Example_Folder') 
 ```
 
-Download via Video
+##### Download via Video
 
 ```python
 from mytiktok.video import Video
