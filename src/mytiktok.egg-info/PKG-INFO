@@ -1,3 +1,15 @@
+Metadata-Version: 2.1
+Name: mytiktok
+Version: 0.0.3
+Summary: A Simple Python Package for Scarping and Downloading Tiktok Videos
+Author-email: Dragoneyes <yolo89381@gmail.com>
+Project-URL: Homepage, https://github.com/geovanigaldemsugar/Mytiktok
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 # MyTIkTok
 ### A Simple Python Package for Scarping and Downloading Tiktok Videos
 
@@ -93,7 +105,7 @@ videos.download(folder_name='Test_videos')
 
 
 > [!NOTE]
-> If using this package headlessy, is important to your needs try running your script in a Docker
+> If using this package headlessy is important to your needs try running your script in a Docker
 
 > [!IMPORTANT]
 > Proxing has not been implemented so there is possiblity of snaptik.app blocking you and or slowing down connection but just dont download excessively, keep the rates low and you should be fine
