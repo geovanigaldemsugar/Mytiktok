@@ -14,9 +14,14 @@ class Video():
     def __init__(self, url = None):
         self.url = url
 
-     
+        url_is_string = isinstance(self.url, str)
+
+        if not url_is_string:
+            raise UrlNotStringError()  
+        
         if url is None:
             raise NoInputError(method='url')
+        
         
 
         # validate tiktok url

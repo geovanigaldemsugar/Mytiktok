@@ -51,6 +51,11 @@ class UrlNotListError(Exception):
         message  = 'URLS Must Be A List'
         super().__init__(message)
 
+class UrlNotStringError(Exception):
+    def __init__(self):
+        message  = 'URLS Must Be A String'
+        super().__init__(message)
+
 class PathInvalidError(Exception):
     def __init__(self):
         message = 'Path Is Invalid Please Enter Path Again'
