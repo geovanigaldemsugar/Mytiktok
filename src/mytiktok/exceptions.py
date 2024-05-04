@@ -72,7 +72,7 @@ class UrlMediaTypeError(Exception):
 class AccountInvalidError(Exception):
 
     def __init__(self, account):
-        message = 'Account {} is Invalid please Enter Unique Author Name'
+        message = 'Account {} is Invalid please Enter Unique Author Name'.format(account)
         super().__init__(message)
 
 class AccountsNotListError(Exception):
@@ -100,7 +100,3 @@ class AuthInvalidError(Exception):
         message  = 'Email and Password Is Incorrect Check'
         super().__init__(message)
 
-class AccountInvalidError(Exception):
-    def __init__(self):
-        message = 'Email and Password Does Not Exist Please Check Again'
-        super().__init__(message)
