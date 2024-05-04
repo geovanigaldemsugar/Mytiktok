@@ -1,2 +1,1 @@
-include src/mytiktok/Data/*.txt
 include src/mytiktok/*.txt
