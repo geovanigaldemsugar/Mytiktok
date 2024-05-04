@@ -1,2 +1,2 @@
-include mytiktok/Data/*.txt
-include *.txt
+include src/mytiktok/Data/*.txt
+include src/mytiktok/*.txt
