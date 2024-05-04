@@ -1,1 +1,1 @@
-graft Data
+include src/mytiktok/*.txt

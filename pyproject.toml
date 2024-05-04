@@ -74,7 +74,14 @@ dependencies = [
 "zstandard == 0.22.0",
 
 ]
+[tool.setuptools]
+# ...
+# By default, include-package-data is true in pyproject.toml, so you do
+# NOT have to specify this line.
+include-package-data = true
 
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [project.urls]
 Homepage = "https://github.com/geovanigaldemsugar/Mytiktok"
