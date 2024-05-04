@@ -50,7 +50,7 @@ class Login():
             time.sleep(2)
             captcha  = Helper.captcha_present(self.driver)
 
-            time.sleep(5)
+            time.sleep(20)
             if captcha:
                 raise EncounteredCaptchaError()
                 
