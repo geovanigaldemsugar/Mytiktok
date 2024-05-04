@@ -52,7 +52,7 @@ tiktok  = Tiktok(email=email, password=password)
 
 #returns a videos object
 videos  = tiktok.accounts(accounts=accounts, amnt=14)
-print(video.info_list)
+print(video.info_dict)
 
 ```
 ### Downloading Videos
