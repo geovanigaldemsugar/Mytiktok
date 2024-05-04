@@ -40,10 +40,10 @@ email = 'your_tiktok_email@gmail.com'
 password = 'your_tiktok_password'
 
 accounts  = [
-'@calebbpartain'
-'@dailychristmotives'
-'@inspiringfaith1'
-'@spreadthewordbro_'
+'@calebbpartain',
+'@dailychristmotives',
+'@inspiringfaith1',
+'@spreadthewordbro_',
 
 ]
 
