@@ -71,7 +71,7 @@ class AccVideos():
             self.videos_ids_lists.append(video_id_list)
 
 
-        print(self.videos_ids_lists)
+        # print(self.videos_ids_lists)
 
     def download(self, HD=False, load_time = 10, folder_name = 'accounts'):
             '''Download Videos in Bulk Using Snaptik Use Excessivly at Your Own Risk at Getting Ban IP '''
