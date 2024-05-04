@@ -80,8 +80,7 @@ dependencies = [
 # NOT have to specify this line.
 include-package-data = true
 
-[tool.setuptools.packages.find]
-where = ["src/mytiktok/Data"]
+
 
 [project.urls]
 Homepage = "https://github.com/geovanigaldemsugar/Mytiktok"
