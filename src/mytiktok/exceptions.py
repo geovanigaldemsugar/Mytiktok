@@ -80,6 +80,16 @@ class AccountsNotListError(Exception):
         message  = 'Accounts Must Be A List'
         super().__init__(message)
 
+class UrlNotDictError(Exception):
+    def __init__(self):
+        message  = 'Account URLS Must Be A Dictionary'
+        super().__init__(message)
+
+class AccountDictEmptyError(Exception):
+    def __init__(self):
+        message  = 'Account Dictionary Is Empty'
+        super().__init__(message)
+
 class EmailNotStringError(Exception):
     def __init__(self):
         message  = 'Email Must Be A String'

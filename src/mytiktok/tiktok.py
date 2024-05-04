@@ -3,6 +3,7 @@ from .login import Login
 from .exceptions import *
 from .helper import Helper
 from .videos import Videos
+from account_videos import AccVideos
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -133,7 +134,7 @@ class Tiktok():
 
         
 
-        return Videos(urls = urls_of_accounts)
+        return AccVideos(acc_urls=urls_of_accounts)
         
     
     def __get_urls_base(self, save=False, save_path=None, load_time = 10, amnt = None):

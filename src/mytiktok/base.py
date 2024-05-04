@@ -25,7 +25,7 @@ class Base():
         options.add_argument('--no-sandbox') #prevents slenium from not accessing system resources
         # options.add_argument(f'--proxy-server={proxy}')
         # options.add_argument(f'user-agent={random_ua}')
-        # options.add_argument("--disable-blink-features=AutomationControlled")
+        options.add_argument("--disable-blink-features=AutomationControlled")
 
         # set driver to headless mode
         if headless:
