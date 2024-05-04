@@ -78,9 +78,9 @@ dependencies = [
 # ...
 # By default, include-package-data is true in pyproject.toml, so you do
 # NOT have to specify this line.
-include-package-data = true
 
-
+[tool.setuptools.packages.find]
+where = ["src/mytiktok/Data"]
 
 [project.urls]
 Homepage = "https://github.com/geovanigaldemsugar/Mytiktok"
