@@ -75,6 +75,10 @@ dependencies = [
 
 ]
 
+[tool.setuptools]
+include-package-data = true
+
+
 [project.urls]
 Homepage = "https://github.com/geovanigaldemsugar/Mytiktok"
 

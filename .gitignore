@@ -4,6 +4,6 @@ env/
 accounts/
 .vscode/
 *.env
-cookies.pkl
+*.pkl
 things to do.txt
 
