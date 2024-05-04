@@ -1,0 +1,99 @@
+Session Related Cookies
+
+name: sessionid_ss
+expiry: Oct-27-2024
+secure:True
+
+name: multi_sids
+expiry: Jun-29-2024
+secure:True
+
+name: sid_tt
+expiry: Oct-27-2024
+secure:True
+
+name: sessionid
+expiry: Oct-27-2024
+secure:True
+
+
+Authorization  Cookies
+
+name: msToken
+expiry: Jul-29-2024
+secure:False
+
+name: msToken
+expiry: May-10-2024
+secure:True
+
+name: ttwid
+expiry: Apr-30-2025
+secure:True
+
+name: odin_tt
+expiry: Apr-30-2025
+secure:False
+
+
+Security Cookies
+
+name: tt_chain_token
+expiry: Oct-27-2024
+secure:True
+
+name: passport_csrf_token
+expiry: Jun-29-2024
+secure:True
+
+name: passport_csrf_token_default
+expiry: Jun-29-2024
+secure:False
+
+name: cmpl_token
+expiry: Jun-29-2024
+secure:True
+
+
+name: last_login_method
+expiry: Jul-29-2024
+secure:False
+
+
+name: tt-target-idc
+expiry: Oct-27-2024
+secure:False
+
+
+name: store-country-code-src
+expiry: Oct-27-2024
+secure:False
+
+
+name: store-idc
+expiry: Oct-27-2024
+secure:False
+
+
+name: ssid_ucp_v1
+expiry: Oct-27-2024
+secure:True
+
+name: uid_tt_ss
+expiry: Oct-27-2024
+secure:True
+
+
+name: store-country-code
+expiry: Oct-27-2024
+secure:False
+
+name: sid_ucp_v1
+expiry: Oct-27-2024
+secure:True
+
+
+name: uid_tt
+expiry: Oct-27-2024
+secure:True
+

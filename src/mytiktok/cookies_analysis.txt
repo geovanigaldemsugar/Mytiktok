@@ -1,0 +1,124 @@
+name: msToken
+expiry: Jul-29-2024
+secure:False
+
+name: odin_tt
+expiry: Apr-30-2025
+secure:False
+
+name: ttwid
+expiry: Apr-30-2025
+secure:True
+
+name: msToken
+expiry: May-10-2024
+secure:True
+
+name: passport_fe_beating_status
+expiry: Dec-31-1969
+secure:False
+
+name: bm_sv
+expiry: Apr-30-2024
+secure:True
+
+name: last_login_method
+expiry: Jul-29-2024
+secure:False
+
+name: tt-target-idc-sign
+expiry: Apr-30-2025
+secure:False
+
+name: tt_chain_token
+expiry: Oct-27-2024
+secure:True
+
+name: passport_csrf_token
+expiry: Jun-29-2024
+secure:True
+
+name: passport_csrf_token_default
+expiry: Jun-29-2024
+secure:False
+
+name: tt-target-idc
+expiry: Oct-27-2024
+secure:False
+
+name: tt_csrf_token
+expiry: Dec-31-1969
+secure:True
+
+name: store-country-code-src
+expiry: Oct-27-2024
+secure:False
+
+name: cmpl_token
+expiry: Jun-29-2024
+secure:True
+
+name: store-idc
+expiry: Oct-27-2024
+secure:False
+
+name: sid_tt
+expiry: Oct-27-2024
+secure:True
+
+name: ssid_ucp_v1
+expiry: Oct-27-2024
+secure:True
+
+name: uid_tt_ss
+expiry: Oct-27-2024
+secure:True
+
+name: sid_guard
+expiry: Apr-25-2025
+secure:True
+
+name: store-country-code
+expiry: Oct-27-2024
+secure:False
+
+name: sessionid_ss
+expiry: Oct-27-2024
+secure:True
+
+name: ak_bmsc
+expiry: Apr-30-2024
+secure:False
+
+name: s_v_web_id
+expiry: Dec-31-1969
+secure:True
+
+name: sid_ucp_v1
+expiry: Oct-27-2024
+secure:True
+
+name: d_ticket
+expiry: Apr-30-2025
+secure:False
+
+name: perf_feed_cache
+expiry: May-05-2024
+secure:True
+
+name: multi_sids
+expiry: Jun-29-2024
+secure:True
+
+name: sessionid
+expiry: Oct-27-2024
+secure:True
+
+name: uid_tt
+expiry: Oct-27-2024
+secure:True
+
+name: tiktok_webapp_theme
+expiry: Feb-24-2025
+secure:True
+
