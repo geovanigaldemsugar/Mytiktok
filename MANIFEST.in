@@ -1,1 +1,2 @@
 include mytiktok/Data/*.txt
+include *.txt
