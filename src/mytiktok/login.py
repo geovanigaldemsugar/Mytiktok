@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from .helper import Helper
 from . import helper
-from .exceptions import EncounteredCaptchaError
+from .exceptions import *
 import time
 import pickle
 
@@ -32,12 +32,14 @@ class Login():
             time.sleep(2)
             login_with_email = self.driver.find_element(By.XPATH,'//a[@href="/login/phone-or-email/email"]')
             login_with_email.click()
-
-            time.sleep(2)
+            
+            # Retry unitl we get captched  or user we detect wrong login info
+    
+            time.sleep(10)
             email_input = self.driver.find_element(By.XPATH,'//input[@placeholder="Email or username"]')
             email_input.send_keys(self.email)
 
-            time.sleep(2)
+            time.sleep(10)
             password_input = self.driver.find_element(By.XPATH, '//input[@placeholder="Password"]')
             password_input.send_keys(self.password)
 
@@ -48,17 +50,20 @@ class Login():
             time.sleep(2)
             captcha  = Helper.captcha_present(self.driver)
 
+            time.sleep(5)
             if captcha:
                 raise EncounteredCaptchaError()
-            
+                
             time.sleep(18)
             
             # print("creating cookies!!")
             #get cookies for next session without having to login
-            pickle.dump(self.driver.get_cookies(), open(self.cookies, 'wb'))      
+
+            with open(self.cookies, 'wb') as cookie_file:
+                pickle.dump(self.driver.get_cookies(),  cookie_file)  
             
             #save screenshot
-            self.driver.save_screenshot('getcookies.png')
+            # self.driver.save_screenshot('getcookies.png')
 
 
         # print('Session Cookies found!')

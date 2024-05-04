@@ -94,3 +94,13 @@ class SearchTermNotStringError(Exception):
     def __init__(self):
         message  = 'Search Term Must Be A String'
         super().__init__(message)
+
+class AuthInvalidError(Exception):
+    def __init__(self):
+        message  = 'Email and Password Is Incorrect Check'
+        super().__init__(message)
+
+class AccountInvalidError(Exception):
+    def __init__(self):
+        message = 'Email and Password Does Not Exist Please Check Again'
+        super().__init__(message)

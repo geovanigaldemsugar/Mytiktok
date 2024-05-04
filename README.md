@@ -91,6 +91,12 @@ videos.download(folder_name='Test_videos')
 
 ```
 
+## Limitations
+- **Uses Chrome Instances**
+- **Login attempts Frequently Fail**
+- **Download atempts can fail from time to time**
+
+#### If your planning to download in bulk ensure to save urls and use `Videos` class instead
 
 > [!NOTE]
 > If using this package headlessy, is important to your needs try running your script in a Docker
