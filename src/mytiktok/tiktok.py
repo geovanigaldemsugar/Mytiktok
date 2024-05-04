@@ -3,7 +3,7 @@ from .login import Login
 from .exceptions import *
 from .helper import Helper
 from .videos import Videos
-from account_videos import AccVideos
+from .account_videos import AccVideos
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
