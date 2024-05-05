@@ -1,5 +1,7 @@
 Tests/
 src/__pycache__
+dist/
+
 env/
 accounts/
 .vscode/
