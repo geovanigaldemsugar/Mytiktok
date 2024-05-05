@@ -52,7 +52,7 @@ tiktok  = Tiktok(email=email, password=password)
 
 #returns a videos object
 videos  = tiktok.accounts(accounts=accounts, amnt=14)
-print(video.info_dict)
+print(videos.info_dict)
 
 ```
 ### Downloading Videos
@@ -94,12 +94,12 @@ videos.download(folder_name='Test_videos')
 ## Limitations
 - **Uses Chrome Instances**
 - **Login attempts Frequently Fail**
-- **Download atempts can fail from time to time**
+- **Download attempts can fail from time to time**
 
-#### If your planning to download in bulk ensure to save urls and use `Videos` class instead
+#### If you are planning to download in bulk ensure to save URLs and use the `Videos` class instead
 
 > [!NOTE]
-> If using this package headlessy, is important to your needs try running your script in a Docker
+> If using this package headlessly, is important to your needs try running your script in a Docker
 
 > [!IMPORTANT]
-> Proxing has not been implemented so there is possiblity of snaptik.app blocking you and or slowing down connection but just dont download excessively, keep the rates low and you should be fine
+> Proxing has not been implemented so there is a possibility of snaptik.app blocking you and or slowing down your connection but just don't download excessively, keep the rates low and you should be fine
