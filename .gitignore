@@ -1,6 +1,6 @@
 Tests/
-src/mytiktok/__pycache__
-src/mytiktok/Data/__pycache__
+src/mytiktok/__pycache__/
+src/mytiktok/Data/__pycache__/
 dist/
 env/
 accounts/
