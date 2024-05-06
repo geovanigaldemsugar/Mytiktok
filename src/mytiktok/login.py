@@ -31,7 +31,7 @@ class Login():
             self.driver.get('https://www.tiktok.com/')
             time.sleep(2)
 
-            email_phone_button = self.wait.until(EC.presence_of_element_located((By.XPATH, '.css-102dq55-DivLoginOptionContainer > div:nth-child(2) > div:nth-child(2)')))            
+            email_phone_button = self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '.css-102dq55-DivLoginOptionContainer > div:nth-child(2) > div:nth-child(2)')))            
             email_phone_button.click()
             
 
