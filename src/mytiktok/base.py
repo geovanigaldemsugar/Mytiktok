@@ -26,11 +26,15 @@ class Base():
         # options.add_argument(f'--proxy-server={proxy}')
         # options.add_argument(f'user-agent={random_ua}')
         options.add_argument("--disable-blink-features=AutomationControlled")
+        options.add_argument('--disable-gpu')
+        options.add_argument("--no-sandbox")  # Docker may need this
+        options.add_argument("--disable-dev-shm-usage")  # Prevents crashes in Docker
+
+
 
         # set driver to headless mode
         if headless:
             options.add_argument('--headless')
-            options.add_argument('--disable-gpu')
 
         self.options = options
 
