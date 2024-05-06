@@ -31,11 +31,12 @@ class Login():
             self.driver.get('https://www.tiktok.com/')
             time.sleep(2)
 
-            email_phone_button = self.wait.until(EC.presence_of_element_located((By.XPATH, '//a[@href="/login/phone-or-email/email"]')))            
+            email_phone_button = self.wait.until(EC.presence_of_element_located((By.XPATH, '.css-102dq55-DivLoginOptionContainer > div:nth-child(2) > div:nth-child(2)')))            
             email_phone_button.click()
+            
 
             time.sleep(2)
-            login_with_email = self.driver.find_element(By.XPATH,'//a[@href="/login/phone-or-email/email" and text()="Log in with email or username"]')
+            login_with_email = self.driver.find_element(By.XPATH,'//a[@href="/login/phone-or-email/email"]')
             login_with_email.click()
             
             # Retry unitl we get captched  or user we detect wrong login info
