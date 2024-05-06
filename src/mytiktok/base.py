@@ -35,7 +35,7 @@ class Base():
         self.options = options
 
     def driver(self):
-        self.driver = uc.Chrome(options = self.options)
+        self.driver = uc.Chrome(version_main=104, options = self.options)
         
         return self.driver
     
