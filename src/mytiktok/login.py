@@ -35,7 +35,7 @@ class Login():
             email_phone_button.click()
 
             time.sleep(2)
-            login_with_email = self.driver.find_element(By.XPATH,'//a[@href="/login/phone-or-email/email"]')
+            login_with_email = self.driver.find_element(By.XPATH,'//a[@href="/login/phone-or-email/email" and text()="Log in with email or username"]')
             login_with_email.click()
             
             # Retry unitl we get captched  or user we detect wrong login info
