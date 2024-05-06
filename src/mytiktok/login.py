@@ -4,6 +4,10 @@ from . import helper
 from .exceptions import *
 import time
 import pickle
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+# Set a timeout of 10 seconds
 
 
 class Login():
@@ -14,6 +18,7 @@ class Login():
         self.password = password
         self.cookies = helper.cookies_path
         self.driver  = driver
+        self.wait = WebDriverWait(self.driver, 10)
         # self.captcha  = False
 
 
@@ -26,7 +31,7 @@ class Login():
             self.driver.get('https://www.tiktok.com/')
             time.sleep(2)
 
-            email_phone_button = self.driver.find_element(By.XPATH, '//a[@href="/login/phone-or-email/email"]')
+            email_phone_button = self.wait.until(EC.presence_of_element_located((By.XPATH, '//a[@href="/login/phone-or-email/email"]')))            
             email_phone_button.click()
 
             time.sleep(2)
