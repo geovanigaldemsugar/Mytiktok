@@ -26,7 +26,7 @@ class Login():
             self.driver.get('https://www.tiktok.com/')
             time.sleep(2)
 
-            email_phone_button = self.driver.find_elements(By.CSS_SELECTOR, '.css-17hparj-DivBoxContainer.e1cgu1qo0')[1]
+            email_phone_button = self.driver.find_elements(By.XPATH, '//a[@href="/login/phone-or-email/email"]')
             email_phone_button.click()
 
             time.sleep(2)
