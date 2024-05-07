@@ -159,6 +159,17 @@ class Tiktok():
             #find link elements containing links
             link_elements = self.wait.until(EC.visibility_of_all_elements_located((By.XPATH,  '//div[@class=" css-1as5cen-DivWrapper e1cg0wnj1"]//a')))
 
+            try:
+                link_elements = self.wait.until(
+                    EC.visibility_of_all_elements_located((By.XPATH, '//div[@class="css-1as5cen-DivWrapper e1cg0wnj1"]//a'))
+                )
+            except Exception as e:
+                # Take a screenshot for debugging
+                self.driver.save_screenshot("timeout_screenshot.png")
+                # Print page source for further investigation
+                with open("page_source.html", "w") as f:
+                    f.write(self.driver.page_source)
+                raise e  # Re-raise the exception to propagate it
 
             posts = [element.get_attribute('href') for element in link_elements]
 
