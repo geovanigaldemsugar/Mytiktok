@@ -11,12 +11,12 @@
 -  **`pip install mytiktok`**
 
 ## Visual Output
-The package itself uses undetected-chromedriver for webautomation which controls whether the chrome instance to renders or not  hence the `headless` option. Using headless mode increases the chances of a capthca being raised and scraping failed. So far in testing captcha is only noticed at `Login()`  but once login successful cookies are created and you should be fine in successive usage of the package until the cookies expire.
+The package itself uses undetected-chromedriver for web automation which controls whether the chrome instance to renders or not  hence the `headless` option. Using headless mode increases the chances of a captcha being raised and scraping failed. So far in testing captcha is only noticed at `Login()`  but once login is successful cookies are created and you should be fine in successive usage of the package until the cookies expire.
 
-So implementing Retries is important if your planning on using this package for a project.
+So implementing Retries is important if you are planning on using this package for a project.
 
 > [!NOTE]
-> I recommend using `headless = True` after you've aleady passed Login and generated cookies, and after you can use `headless = False` but alternatively you can just always set `headless = True`
+> I recommend using `headless = True` after you've already passed Login and generated cookies, and after you can use `headless = False` but alternatively you can just always set `headless = True`
 
 
 
@@ -100,6 +100,7 @@ videos  = Videos(urls = urls)
 videos.download(folder_name='Test_videos')
 
 ```
+#### If you are planning to download in bulk ensure to save URLs and use the `Videos` class instead
 
 ## Limitations
 - **Uses Chrome Instances**
@@ -110,7 +111,6 @@ videos.download(folder_name='Test_videos')
 - [x] https://github.com/geovanigaldemsugar/Mytiktok/issues/1
 - [ ] Slow 
 
-#### If you are planning to download in bulk ensure to save URLs and use the `Videos` class instead
 
 > [!NOTE]
 > If using this package headlessly, is important to your needs try running your script in a Docker
