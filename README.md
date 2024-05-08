@@ -16,7 +16,7 @@ The package itself uses undetected-chromedriver for webautomation which controls
 So implementing Retries is important if your planning on using this package for a project.
 
 > [!NOTE]
-> I recommend using `headless = True` after you've aleady passed Login and generated cookies after using `headless = False` but alternatively you can just always set `headless = True`
+> I recommend using `headless = True` after you've aleady passed Login and generated cookies, and after you can use `headless = False` but alternatively you can just always set `headless = True`
 
 
 
