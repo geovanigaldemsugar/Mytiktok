@@ -36,7 +36,7 @@ class Tiktok():
     
          # get driver from base class, initailze variables
         self.driver = Base(headless=headless).driver() 
-        self.wait = WebDriverWait(self.driver, 100)
+        self.wait = WebDriverWait(self.driver, 30)
         self.login = Login(self.email, self.password, self.driver)
 
 
