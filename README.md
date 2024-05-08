@@ -107,7 +107,7 @@ videos.download(folder_name='Test_videos')
 - **Download attempts can fail from time to time**
 
 ## Issues
-- [ ] https://github.com/geovanigaldemsugar/Mytiktok/issues/1
+- [x] https://github.com/geovanigaldemsugar/Mytiktok/issues/1
 - [ ] Slow 
 
 #### If you are planning to download in bulk ensure to save URLs and use the `Videos` class instead
