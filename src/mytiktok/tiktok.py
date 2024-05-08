@@ -157,7 +157,7 @@ class Tiktok():
             time.sleep(load_time)  
 
             #find link elements containing links
-            link_elements = self.wait.until(EC.visibility_of_all_elements_located((By.XPATH,  '//div[@class=" css-1as5cen-DivWrapper e1cg0wnj1"]//a')))
+            link_elements = self.wait.until(EC.presence_of_all_elements_located((By.XPATH,  '//div[@class=" css-1as5cen-DivWrapper e1cg0wnj1"]//a')))
 
 
             posts = [element.get_attribute('href') for element in link_elements]
