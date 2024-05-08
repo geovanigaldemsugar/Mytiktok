@@ -73,16 +73,16 @@ class Helper():
                     expiry  = cookie.get('expiry')
                     cookies_expiry_to_test.append(expiry)
                     
-            todays_date = time.time()
+        todays_date = time.time()
             
-            earliest_expiry  = min(cookies_expiry_to_test)
+        earliest_expiry  = min(cookies_expiry_to_test)
 
-            if earliest_expiry <= todays_date: 
-                expired = True
-            else:
-                expired = False
+        if earliest_expiry <= todays_date: 
+            expired = True
+        else:
+            expired = False
 
-            return expired
+        return expired
 
     
     @staticmethod
@@ -99,8 +99,8 @@ if __name__ == '__main__':
     # print(dir_path)
     # print(cookies_path)
     # print(Helper.need_login())
-    print(Helper._Helper__cookies_exist(cookies_path))
-    # print(Helper._Helper__cookies_expired(cookies_path))
+    # print(Helper._Helper__cookies_exist(cookies_path))
+    print(Helper._Helper__cookies_expired(cookies_path))
     # print(Helper.get_accounts())
     # print(Helper.get_hashtags())
     # print(Helper.valid_account('@calebbpartain'))
