@@ -113,7 +113,7 @@ videos.download(folder_name='Test_videos')
 
 
 > [!NOTE]
-> If using this package headlessly, is important to your needs try running your script in a Docker
+> If using this package with visual output is important to your needs try running your script in a Docker
 
 > [!IMPORTANT]
 > Proxing has not been implemented so there is a possibility of snaptik.app blocking you and or slowing down your connection but just don't download excessively, keep the rates low and you should be fine
