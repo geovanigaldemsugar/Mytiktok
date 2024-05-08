@@ -123,7 +123,7 @@ class Tiktok():
 
             if save and not os.path.exists(save_folder): 
                 os.makedirs(save_folder)
-            print("|-----{}-----|".format(acct))
+            print(acct)
             urls  = self.__get_urls_base (save=save, save_path=save_path,load_time=load_time, amnt = amnt)
             # print(urls)
             urls_of_accounts[acct]  = urls
