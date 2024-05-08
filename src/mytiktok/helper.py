@@ -75,14 +75,14 @@ class Helper():
                     
             todays_date = time.time()
             
-            earliest_expiry  = min(cookies_expiry_to_test)
+        earliest_expiry  = min(cookies_expiry_to_test)
 
-            if earliest_expiry <= todays_date: 
-                expired = True
-            else:
-                expired = False
+        if earliest_expiry <= todays_date: 
+            expired = True
+        else:
+            expired = False
 
-            return expired
+        return expired
 
     
     @staticmethod
