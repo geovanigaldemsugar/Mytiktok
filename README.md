@@ -10,6 +10,16 @@
 ### Windows
 -  **`pip install mytiktok`**
 
+## Visual Output
+The package itself uses undetected-chromedriver for webautomation which controls whether the chrome instance to renders or not  hence the `headless` option. Using headless mode increases the chances of a capthca being raised and scraping failed. So far in testing captcha is only noticed at `Login()`  but once login successful cookies are created and you should be fine in successive usage of the package until the cookies expire.
+
+So implementing Retries is important if your planning on using this package for a project.
+
+> [!NOTE]
+> I recommend using `headless = True` after you've aleady passed Login and generated cookies after using `headless = False` but alternatively you can just always set `headless = True`
+
+
+
 
 ## Example Usages
 ### Search for tiktok videos
@@ -95,6 +105,10 @@ videos.download(folder_name='Test_videos')
 - **Uses Chrome Instances**
 - **Login attempts Frequently Fail**
 - **Download attempts can fail from time to time**
+
+## Issues
+- [ ] #1
+- [ ] Slow 
 
 #### If you are planning to download in bulk ensure to save URLs and use the `Videos` class instead
 
