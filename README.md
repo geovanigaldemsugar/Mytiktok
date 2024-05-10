@@ -11,7 +11,7 @@
 -  **`pip install mytiktok`**
 
 ## Visual Output
-The package itself uses undetected-chromedriver for web automation which controls whether the chrome instance to renders or not  hence the `headless` option. Using headless mode increases the chances of a captcha being raised and scraping failed. So far in testing captcha is only noticed at `Login()`  but once login is successful cookies are created and you should be fine in successive usage of the package until the cookies expire.
+The package itself uses undetected-chromedriver for web automation which controls whether the chrome instance to renders or not  hence the `headless` option. Using headless mode increases the chances of a captcha being raised and scraping process failing. So far in testing captcha is only noticed at `Login()`  but once login is successful cookies are created and you should be fine in successive usage of the package until the cookies expire.
 
 So implementing Retries is important if you are planning on using this package for a project.
 
