@@ -123,9 +123,9 @@ class Tiktok():
 
             if save and not os.path.exists(save_folder): 
                 os.makedirs(save_folder)
-
+            print(acct)
             urls  = self.__get_urls_base (save=save, save_path=save_path,load_time=load_time, amnt = amnt)
-            print(urls)
+            # print(urls)
             urls_of_accounts[acct]  = urls
         
         #finished scraped now quitting
@@ -157,7 +157,7 @@ class Tiktok():
             time.sleep(load_time)  
 
             #find link elements containing links
-            link_elements = self.wait.until(EC.visibility_of_all_elements_located((By.XPATH,  '//div[@class=" css-1as5cen-DivWrapper e1cg0wnj1"]//a')))
+            link_elements = self.wait.until(EC.presence_of_all_elements_located((By.XPATH,  '//div[@class=" css-1as5cen-DivWrapper e1cg0wnj1"]//a')))
 
 
             posts = [element.get_attribute('href') for element in link_elements]

@@ -10,6 +10,16 @@
 ### Windows
 -  **`pip install mytiktok`**
 
+## Visual Output
+The package itself uses undetected-chromedriver for web automation which controls whether the chrome instance to renders or not  hence the `headless` option. Using headless mode increases the chances of a captcha being raised and scraping process failing. So far in testing captcha is only noticed at `Login()`  but once login is successful cookies are created and you should be fine in successive usage of the package until the cookies expire.
+
+So implementing Retries is important if you are planning on using this package for a project.
+
+> [!NOTE]
+> I recommend using `headless = True` after you've already passed Login and generated cookies, and after you can use `headless = False` but alternatively you can just always set `headless = True`
+
+
+
 
 ## Example Usages
 ### Search for tiktok videos
@@ -71,7 +81,7 @@ from mytiktok.video import Video
 url = 'https://www.tiktok.com/@calebbpartain/video/7363384781024906538'
 
 video  = Video(url = url)
-video.download(file_name='test.mp4')
+video.download(file_name='video.mp4')
 
 ```
 #### Download via Videos Class
@@ -90,16 +100,20 @@ videos  = Videos(urls = urls)
 videos.download(folder_name='Test_videos')
 
 ```
+#### If you are planning to download in bulk ensure to save URLs and use the `Videos` class instead
 
 ## Limitations
 - **Uses Chrome Instances**
 - **Login attempts Frequently Fail**
 - **Download attempts can fail from time to time**
 
-#### If you are planning to download in bulk ensure to save URLs and use the `Videos` class instead
+## Issues
+- [x] https://github.com/geovanigaldemsugar/Mytiktok/issues/1
+- [ ] Slow 
+
 
 > [!NOTE]
-> If using this package headlessly, is important to your needs try running your script in a Docker
+> If using this package with visual output is important to your needs try running your script in a Docker
 
 > [!IMPORTANT]
 > Proxing has not been implemented so there is a possibility of snaptik.app blocking you and or slowing down your connection but just don't download excessively, keep the rates low and you should be fine
