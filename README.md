@@ -7,7 +7,7 @@
 
 
 ## Installation
-[![Downloads](https://static.pepy.tech/badge/mytiktok)](https://pepy.tech/project/mytiktok)
+[![Downloads](https://static.pepy.tech/badge/mytiktok)](https://pepy.tech/project/mytiktok) - Inclusive of test installs
 
 ### Linux/Unix 
 -  **`pip3 install mytiktok`**
