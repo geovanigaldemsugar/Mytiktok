@@ -116,8 +116,6 @@ videos.download(folder_name='Test_videos')
 - [ ] Faster Scrape times
 - [ ] Chrome Handling Done by the Package
 
-## A maybe
-- [ ] Docker Api for the package - So interactions will mainly be handled via http requests locally
  
 > [!NOTE]
 > If using this package with visual output is important to your needs try running your script in a Docker
