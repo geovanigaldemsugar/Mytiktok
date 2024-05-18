@@ -1,5 +1,6 @@
 # MyTIkTok
 ### A Simple Python Package for Scarping and Downloading Tiktok Videos
+[![Downloads](https://static.pepy.tech/badge/mytiktok)](https://pepy.tech/project/mytiktok)
 
 
 ## Installation
