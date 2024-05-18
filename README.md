@@ -116,7 +116,7 @@ videos.download(folder_name='Test_videos')
 - [x] https://github.com/geovanigaldemsugar/Mytiktok/issues/1
 - [ ] Slow
 
-## Imporvements Coming Soon
+## Imporvements Coming Soon !
 - [ ] Scraping Statistics
 - [ ] Faster Scrape times
 - [ ] Chrome Handling Done by the Package
