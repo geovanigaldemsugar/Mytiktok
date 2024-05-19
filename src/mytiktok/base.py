@@ -1,6 +1,7 @@
 import undetected_chromedriver as uc
 from fake_useragent import UserAgent
-import time
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 class Base():
@@ -31,13 +32,14 @@ class Base():
 
         # set driver to headless mode
         if headless:
-            options.add_argument('--headless')
+            options.add_argument('--headless=new')
 
         self.options = options
 
     def driver(self):
-        self.driver = uc.Chrome(options = self.options)
         
+        service = Service(executable_path= ChromeDriverManager.install())
+        self.driver = uc.Chrome(service = service, options = self.options)
         return self.driver
     
 
