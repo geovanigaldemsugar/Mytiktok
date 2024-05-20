@@ -110,8 +110,16 @@ class SearchTermNotStringError(Exception):
         message  = 'Search Term Must Be A String'
         super().__init__(message)
 
-class AuthInvalidError(Exception):
-    def __init__(self):
-        message  = 'Email and Password Is Incorrect Check'
+class LoginInvalidError(Exception):
+    def __init__(self, incorrect:str):
+        if incorrect == 'email and password':
+            message  = 'Account Does Not Exist Please Check Login Credentials'
+        elif incorrect == 'email or password':
+            message  = 'Email and Password Is Incorrect Please Check Login Credentials'
+
+        elif incorrect == 'too many attempts':
+            message = 'Tiktok Detected Too Many Login Attempts Please Try Again at a Later Time !'
+
         super().__init__(message)
+
 

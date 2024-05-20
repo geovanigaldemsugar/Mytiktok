@@ -14,7 +14,7 @@ import pathvalidate
 
 class Tiktok():
 
-    def __init__(self, email = None, password = None, headless = False):
+    def __init__(self, email = None, password = None, headless = True):
 
         self.email = email
         self.password = password

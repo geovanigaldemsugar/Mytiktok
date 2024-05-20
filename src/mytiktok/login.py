@@ -26,6 +26,14 @@ class Login():
             self.driver.get('https://www.tiktok.com/')
             time.sleep(2)
 
+            if not Helper.login_modal_present(self.driver):
+                # print('testing')
+                login_button = self.driver.find_element(By.XPATH, '//button[@id="header-login-button"]')
+                login_button.click()
+
+            # self.driver.save_screenshot('login.png')
+            time.sleep(2)
+
             email_phone_button = self.driver.find_elements(By.CSS_SELECTOR, '.css-17hparj-DivBoxContainer.e1cgu1qo0')[1]
             email_phone_button.click()
 
@@ -44,17 +52,47 @@ class Login():
             password_input.send_keys(self.password)
 
             time.sleep(2)
-            login = self.driver.find_element(By.XPATH,'//button[@data-e2e="login-button"]' )
+            login = self.driver.find_element(By.XPATH,'//button[@data-e2e="login-button"]')
             login.click()
             
+
             time.sleep(2)
             captcha  = Helper.captcha_present(self.driver)
-
-            time.sleep(20)
+            
+            # time.sleep(5)
             if captcha:
                 raise EncounteredCaptchaError()
+
+            time.sleep(5)
+
+            self.driver.save_screenshot('login2.png')
+
+
+
+            login_error = Helper.login_error(self.driver)
+            error_text = login_error.get('error')
+            print(error_text)
+            print(login_error.get('found'))
+
+            # check for the error
+            if login_error.get('found'):
+
+                if error_text == "Username or password doesn't match our records. Try again.":
+                    raise LoginInvalidError('email or password')
                 
-            time.sleep(18)
+                elif error_text == "Account doesn't exist":
+                    raise LoginInvalidError('email and password')
+                
+                elif error_text == 'Maximum number of attempts reached. Try again later.':
+                    raise LoginInvalidError('too many attempts') 
+
+            
+            
+            # //span[@role="status"]
+            # //*[@id="loginContainer"]/div[2]/form/div[3]/span
+        
+            # <span role="status">Username or password doesn't match our records. Try again.</span> Email/Username or password incorrect
+            # <span role="status">Account doesn't exist</span> email ands password invalid
             
             # print("creating cookies!!")
             #get cookies for next session without having to login

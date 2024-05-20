@@ -38,7 +38,7 @@ class Base():
 
     def driver(self):
         
-        service = Service(executable_path= ChromeDriverManager.install())
+        service = Service(executable_path= ChromeDriverManager().install())
         self.driver = uc.Chrome(service = service, options = self.options)
         return self.driver
     
