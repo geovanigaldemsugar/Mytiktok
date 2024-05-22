@@ -1,7 +1,10 @@
 Tests/
 src/mytiktok/__pycache__/
 src/mytiktok/Data/__pycache__/
+src/mytiktok/Data/chrome-linux64/
+src/mytiktok/Data/chromedriver-linux64/
 dist/
+
 env/
 accounts/
 .vscode/
@@ -10,3 +13,4 @@ accounts/
 /*.png
 things to do.txt
 
+/chrome_extract

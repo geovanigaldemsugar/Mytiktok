@@ -122,4 +122,3 @@ class LoginInvalidError(Exception):
 
         super().__init__(message)
 
-

@@ -6,7 +6,6 @@ import os
 
 if helper.Helper._Helper__cookies_exist(helper.cookies_path):os.remove(helper.cookies_path)
 driver = Base(headless=False).driver()
-
 Login('geovaninotice@gmail.com', '0912838', driver)._login()
 driver.quit()
 

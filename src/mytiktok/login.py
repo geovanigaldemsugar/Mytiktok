@@ -20,7 +20,7 @@ class Login():
     def _login(self, page = 'https://www.tiktok.com/'):
         captcha  = False
 
-        if Helper.need_login():
+        if Helper.need_login(helper.cookies_path):
             # print('need to Login')
             # print("No cookies found or has Expired!!")
             self.driver.get('https://www.tiktok.com/')

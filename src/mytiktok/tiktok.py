@@ -132,7 +132,6 @@ class Tiktok():
         self.driver.quit()
         print("All Accounts found!!")
 
-        
 
         return AccVideos(acc_urls=urls_of_accounts)
         
