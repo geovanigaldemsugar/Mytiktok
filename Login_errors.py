@@ -4,7 +4,7 @@ from src.mytiktok import helper
 import time
 import os
 
-if helper.Helper._Helper__cookies_exist(helper.cookies_path):os.remove(helper.cookies_path)
+if helper.Helper._Helper__cookies_exist(helper.COOKIES_PATH):os.remove(helper.COOKIES_PATH)
 driver = Base(headless=False).driver()
 Login('geovaninotice@gmail.com', '0912838', driver)._login()
 driver.quit()
