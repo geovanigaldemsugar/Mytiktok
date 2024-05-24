@@ -1,9 +1,11 @@
-Tests/
 src/mytiktok/__pycache__/
 src/mytiktok/Data/__pycache__/
 src/mytiktok/Data/chrome-linux64/
 src/mytiktok/Data/chromedriver-linux64/
 dist/
+Tests/Test_inputs/cookies_to_test_May10.pkl
+Tests/__pycache__/
+
 
 env/
 accounts/
