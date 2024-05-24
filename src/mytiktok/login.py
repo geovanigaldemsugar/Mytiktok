@@ -55,7 +55,7 @@ class Login():
 
             time.sleep(10)
             password_input = self._wait.until(EC.visibility_of_element_located((By.XPATH, '//input[@placeholder="Password"]')))
-            password_input.send_keys(self.password)
+            password_input.send_keys(self._password)
 
             time.sleep(2)
             login = self._wait.until(EC.visibility_of_element_located((By.XPATH,'//button[@data-e2e="login-button"]')))
