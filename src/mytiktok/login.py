@@ -46,7 +46,7 @@ class Login():
             email_phone_button[1].click()
 
             time.sleep(2)
-            login_with_email = self._wait(EC.visibility_of_element_located((By.XPATH,'//a[@href="/login/phone-or-email/email"]')))
+            login_with_email = self._wait.until(EC.visibility_of_element_located((By.XPATH,'//a[@href="/login/phone-or-email/email"]')))
             login_with_email.click()
             
             time.sleep(10)
