@@ -343,7 +343,7 @@ class Tiktok():
         return text
     
     def __stylized_number(self, amount:str) -> Text:
-        return Text(amount,  style='blue')
+        return Text(f'{amount}',  style='blue')
 
 
                       
