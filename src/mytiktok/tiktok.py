@@ -70,7 +70,7 @@ class Tiktok():
             accounts (list): terms to search.
             amounts (int): amount of videos to get
             save (bool): save urls to txt files
-            save_path (str): path to save scrape urls  
+            save_folder (str): folder to save scrape urls of each account
             load_time (int): load time between each successive scroll       
     
         Returns:  
@@ -84,7 +84,7 @@ class Tiktok():
         #go to account page, and scrape account video of links, save to dictionary 
         for acct in accounts:
  
-            save_path =  os.path.join('Accounts', acct + '.txt')
+            save_path =  os.path.join(save_folder, 'Accounts', acct + '.txt')
             account_page = 'https://www.tiktok.com/' + acct
             
             self._login.login(page=account_page) 
@@ -93,8 +93,9 @@ class Tiktok():
 
             if save and not os.path.exists(save_folder): 
                 os.makedirs(save_folder)
+                
             print(acct)
-            urls  = self.__get_urls_base (save=save, save_path=save_folder,load_time=load_time, amnt = amount)
+            urls  = self.__get_urls_base (save=save, save_path=save_path, load_time=load_time, amnt = amount)
             urls_of_accounts[acct]  = urls
         
         #finished scraped now quitting
