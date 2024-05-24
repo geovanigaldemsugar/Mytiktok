@@ -218,12 +218,13 @@ class Tiktok():
         
 
     @staticmethod
-    def __validate_path(path:str) -> None:
+    def __validate_path(path:str, file:bool = True) -> None:
         """
             Validates the File Path
             
             Args:
-            path: Folder path to validate.
+            path (str): Folder path to validate.
+            file (bool): wither the path includes a file
             
             Raises:
                 UrlInvalidError: If the URL is invalid.
@@ -238,7 +239,7 @@ class Tiktok():
         if not path_valid:
             raise ValueError(f'Path format is Invalid {path}')
         
-        if not path.endswith('txt'):
+        if not path.endswith('txt') and file:
                     raise ValueError(f'FileName extention is invalid must end with .txt')
                 
        
@@ -310,7 +311,7 @@ class Tiktok():
                 raise ValueError('Accounts list is empty')
 
             if save_folder is not None:
-                self.__validate_path(save_folder)      
+                self.__validate_path(save_folder, False)      
 
             if not isinstance(amount, int) and amount != None:
                 raise TypeError(f'amount must be a integer or None but received {type(amount).__name__}')
