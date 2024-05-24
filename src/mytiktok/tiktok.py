@@ -26,7 +26,7 @@ class Tiktok():
         self._wait = WebDriverWait(self._driver, 15)
         self._login = Login(self._email, self._password, self._driver)
 
-        self._live = Live(refresh_per_second=4)
+        self._live = Live()
         self._text = None
 
     def search(self, search_term:str, amount:int|None = None, save:bool = False, save_folder:str|None = None, load_time:str = 10 ) -> Videos:
