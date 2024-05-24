@@ -94,8 +94,6 @@ class Tiktok():
             
             self._login.login(page=account_page) 
 
-            time.sleep(1)            
-
             if save and not os.path.exists(save_folder): 
                 os.makedirs(save_folder)
                 
