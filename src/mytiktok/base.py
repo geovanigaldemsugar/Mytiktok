@@ -1,7 +1,6 @@
 import undetected_chromedriver as uc
 from fake_useragent import UserAgent
 from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from . import helper
 import os
 class Base():
@@ -43,7 +42,7 @@ class Base():
 
     def driver(self):
 
-        service = Service(executable_path = helper.DRIVER )
+        service = Service(executable_path = helper.DRIVER)
         self.driver = uc.Chrome( Service=service, options = self.options)
         return self.driver
     

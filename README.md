@@ -113,8 +113,8 @@ videos.download(folder_name='Test_videos')
 
 ## Imporvements Coming Soon
 - [ ] Scraping Statistics
-- [ ] Faster Scrape times
-- [ ] Chrome Handling Done by the Package
+- [] Faster Scrape times
+- [x] Chrome Handling Done by the Package
 
  
 > [!NOTE]

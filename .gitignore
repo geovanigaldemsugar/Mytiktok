@@ -10,7 +10,9 @@ accounts/
 .vscode/
 *.env
 *.pkl
+
 /*.png
 things to do.txt
+r.txt
 
 /chrome_extract

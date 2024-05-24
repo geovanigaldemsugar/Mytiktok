@@ -1,19 +1,38 @@
-from selenium.webdriver.common.by import By
-from selenium.common import exceptions
-import time
 import os
-import pickle
 import requests
 import platform
-from dlbar import DownloadBar
 from zipfile import ZipFile
-import patoolib
+from tqdm import tqdm
 
 class Helper():
+
+    @staticmethod
+    def download(response:requests.Response, filepath:str, title:str, color:str ='magenta', disable=False) -> None:
+        """
+        Download a file with progress Bar
+        
+        Args:
+        Response : requests Response Object
+        filepath (str) : file path to download to
+        title (str) : title to display on the progress bar
+        color (str) : color of progress bar
+        disable (str): disable progress bar
+
+        
+        """
+        format = '{l_bar}{bar}| {n_fmt}/{total_fmt}'
+
+        # Send the GET request to download the video
+        with  tqdm( desc=title, ascii=True, colour=color, total=int(response.headers.get('content-length')), unit_scale=True, bar_format=format, disable=disable,  dynamic_ncols=True) as progress_bar:
+            with open(filepath,  "wb") as f:
+                    # Write the video content to the file
+                    for chunck in response.iter_content(10* 4024):
+                        progress_bar.update(len(chunck))
+                        f.write(chunck)
     
     @staticmethod
-    def is_chrome_installed():
-        '''Checks if Chrome and Chromedriver is intalled and returns a dictions containing thier PATHS, wither both was installed'''
+    def is_chrome_installed() -> dict['chrome':str, 'driver':str, 'installed':bool]:
+        """       Checks if Chrome and Chromedriver is intalled and returns a dictionary containing thier PATHS, wither both was installed    """
         
         # check for os 
         if SYSTEM == 'Windows':
@@ -33,7 +52,7 @@ class Helper():
         chrome =  '/home/geo/Desktop/Mytiktok/src/mytiktok/Data/chrome-linux64/chrome'
         driver = os.path.join(DATA_PATH, folder_names[1], 'chromedriver')
 
-
+        # check if  chrome adn driver are installed
         if os.path.exists(chrome) and os.path.exists(driver):
            installed = True
         else:
@@ -43,7 +62,7 @@ class Helper():
         return {'chrome':chrome, 'driver':driver, 'installed':installed }
 
             
-    def install_chrome():
+    def install_chrome() -> None:
         '''uses Chrome for testing since chrome browser binaries are easily avialable for WINDOWS'''
 
         # check for os 
@@ -72,31 +91,24 @@ class Helper():
         driver_path = os.path.join(DATA_PATH, driver_file_name)
 
         # download the compressed files
-        download_bar = DownloadBar()
-        download_bar.download(url=browser_url, dest=browser_path, title='Downloading Chrome Browser')
-        download_bar.download(url=driver_url, dest=driver_path, title='Downloading Chrome Driver')
-
-
+        browser_response = requests.get(browser_url, stream=True)
+        driver_response = requests.get(driver_url,  stream= True)
+        Helper.download(browser_response, browser_path, title='Downloading Chrome Browser', color='green')
+        Helper.download(driver_response, driver_path, title='Downloading Chrome Driver', color='green' )
+ 
+        # extract
         Helper.extract_zip_with_permissions(browser_path, DATA_PATH)
         Helper.extract_zip_with_permissions(driver_path, DATA_PATH)
 
-
-        # patoolib.extract_archive(browser_path, outdir=DATA_PATH)
-        # patoolib.extract_archive(driver_path, outdir=DATA_PATH)
-
-        # extract chrome and driver zip files
-        # for zip_file_path in (browser_path, driver_path):
-        #     with ZipFile(zip_file_path, 'r') as zip_file:
-        #         zip_file.extractall(DATA_PATH)
-        #         zip_file.close()
-
-        # remove downloaded files
-       
+        # remove downloaded files       
         os.remove(browser_path)
         os.remove(driver_path)
 
     @staticmethod
-    def extract_zip_with_permissions(zip_path, extract_to):
+    def extract_zip_with_permissions(zip_path:str, extract_to:str) -> None:
+        """
+        Extract chrome and chrome driver  with their original executable permissions
+        """
         with ZipFile(zip_path, 'r') as zip_file:
             # iterate over each file in zip file
             for member in zip_file.infolist():
@@ -108,29 +120,11 @@ class Helper():
                 if perm:
                     os.chmod(extracted_path, perm)
 
-    @staticmethod
-    def login_modal_present(driver):
-        try:
-            modal = driver.find_element(By.XPATH, '//div[@id="loginContainer"]')
-            present = modal.is_displayed()
-        except exceptions.NoSuchElementException:
-            present = False
-        
-        return present
-    def login_error(driver):
-        try:
-            error_element = driver.find_element(By.XPATH, '//span[@role="status"]')  
-            text = error_element.text
-            found_error = True
-        
-        except exceptions.NoSuchElementException:
-            text  = None
-            found_error = False
-        
-        return {'found':found_error, 'error':text}
+  
 
     @staticmethod
-    def valid_account(account):
+    def valid_account(account:str) -> bool:
+        """Checks If an account provided is Valid"""
         tik_http_request = 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@tiktok/author/{}'.format(account)  
         response  = requests.get(tik_http_request)
         
@@ -141,17 +135,7 @@ class Helper():
 
         return valid
 
-    @staticmethod
-    def captcha_present(driver):
-        try:
-            captcha =   driver.find_element(By.XPATH , '//div[@class= "captcha_verify_bar sc-hSdWYo glOlPh"]')
-            # captcha =   driver.find_element(By.XPATH , '//div[@class = "captcha_verify_bar sc-eHgmQL izFRfC"]')
-            #  class="captcha_verify_bar sc-hSdWYo glOlPh"
-            present  =  captcha.is_displayed()
-        except exceptions.NoSuchElementException:
-            present  = False
 
-        return present
 
     @staticmethod
     def get_hashtags(file_path = 'hashtags.txt'):
@@ -160,61 +144,15 @@ class Helper():
 
         return hastags
     
-    @staticmethod
-    def need_login(file_path):
 
-        if not Helper.__cookies_exist(file_path) or Helper.__cookies_expired(file_path):
-            need_login = True
-        else:
-            need_login = False
-        
-        return need_login
     @staticmethod
-    def get_accounts(file_path  = 'accounts.txt'):
+    def get_accounts(file_path  = 'accounts.txt') -> list[str]:
+        """Returns a list of accounts from a file"""
         return open(file_path, 'r').read().split()    
-    
 
-    @staticmethod
-    def __cookies_expired(file_path):
-        ''' check if cookies has expired use cookie_names.txt to check for important cookies'''
-        cookies =  pickle.load(open(file_path, 'rb'))       
-        
-        #get cookies loaded back into a pyhton object 
-        file_path_important_cookies  = os.path.join(DIR_PATH, 'Data', 'cookie_names.txt')
-
-        with open(file_path_important_cookies, 'r') as cookie_names:
-            important_cookies = cookie_names.read().splitlines()
-            cookies_expiry_to_test  = []
-
-        for cookie in cookies:
-            name = cookie.get('name') 
-
-            if name in important_cookies:
-                    expiry  = cookie.get('expiry')
-                    cookies_expiry_to_test.append(expiry)
-                    
-            todays_date = time.time()
-            
-        earliest_expiry  = min(cookies_expiry_to_test)
-
-        if earliest_expiry <= todays_date: 
-            expired = True
-        else:
-            expired = False
-
-        return expired
-
-    
-    @staticmethod
-    def __cookies_exist(file_path):
-       return os.path.exists(file_path)
-            
-    @staticmethod
-    def clear():
-        os.system('cls' if os.name == 'nt' else 'clear')
 
 # CONSTANTS
-captcha = False
+CAPTCHA = False
 DIR_PATH  = os.path.dirname(__file__)
 DATA_PATH = os.path.join(DIR_PATH, 'Data')
 COOKIES_PATH =  os.path.join(DATA_PATH, 'cookies.pkl')

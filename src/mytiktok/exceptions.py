@@ -1,6 +1,6 @@
-class EncounteredCaptchaError(Exception):
+class EncounteredCaptchaError(RuntimeError):
 
-    def __init__(self, message = 'Tiktok Triggered Captcha Cannot Proceed With Scraping'):
+    def __init__(self, message:str):
         super().__init__(message)
 
 class NoInputError(Exception):
@@ -30,49 +30,6 @@ class NoInputError(Exception):
         super().__init__(message)
 
 
-class FileNameExtentionError(Exception):
-    def __init__(self):
-        message  = 'File Extension or Type Must be .mp4'
-        super().__init__(message)
-
-
-class HDDownloadError(Exception):
-    def __init__(self):
-        message = 'HD Video Failed to Download'
-        super().__init__(message)
-
-class UrlInvalidError(Exception):
-    def __init__(self, url):
-        message  = 'Tiktok Url {} is Invalid Please Check Url Again'.format(url)
-        super().__init__(message)
-
-class UrlNotListError(Exception):
-    def __init__(self):
-        message  = 'URLS Must Be A List'
-        super().__init__(message)
-
-class UrlNotStringError(Exception):
-    def __init__(self):
-        message  = 'URLS Must Be A String'
-        super().__init__(message)
-
-class PathInvalidError(Exception):
-    def __init__(self):
-        message = 'Path Is Invalid Please Enter Path Again'
-        super().__init__(message)
-
-class UrlsListEmptyError(Exception):
-
-    def __init__(self):
-        message = 'URLS List Is Empty'
-        super().__init__(message)
-
-
-class UrlMediaTypeError(Exception):
-
-    def __init__(self, url):
-        message = 'URL {} media type is Invalid, this package currently only Supports Videos'.format(url)
-        super().__init__(message)
 
 class AccountInvalidError(Exception):
 
@@ -111,14 +68,7 @@ class SearchTermNotStringError(Exception):
         super().__init__(message)
 
 class LoginInvalidError(Exception):
-    def __init__(self, incorrect:str):
-        if incorrect == 'email and password':
-            message  = 'Account Does Not Exist Please Check Login Credentials'
-        elif incorrect == 'email or password':
-            message  = 'Email and Password Is Incorrect Please Check Login Credentials'
-
-        elif incorrect == 'too many attempts':
-            message = 'Tiktok Detected Too Many Login Attempts Please Try Again at a Later Time !'
-
+    def __init__(self, message:str):
+       
         super().__init__(message)
 
