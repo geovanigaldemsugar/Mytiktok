@@ -2,7 +2,7 @@ import undetected_chromedriver as uc
 from fake_useragent import UserAgent
 from selenium.webdriver.chrome.service import Service
 from . import helper
-import os
+
 class Base():
     
     """
@@ -46,8 +46,3 @@ class Base():
         self.driver = uc.Chrome( Service=service, options = self.options)
         return self.driver
     
-
-
-if __name__ == '__main__':
-   pass
-

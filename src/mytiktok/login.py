@@ -21,7 +21,17 @@ class Login():
 
 
     def login(self, page:str = 'https://www.tiktok.com/') -> None:
+        """
+        Login to tiktok (load cookies) and/or save cookies.
 
+        Args:
+            page (str): Tiktok page to go to.
+        Raises:
+            EncounteredCaptchaError: if bot activity was detected.
+            RuntimeError: login details was Inccorrect or somethign went wrong during login.
+
+        
+        """
         if self.__need_login(self._COOKIES_PATH):
 
             self._driver.get('https://www.tiktok.com/')
