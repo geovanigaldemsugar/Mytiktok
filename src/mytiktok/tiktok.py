@@ -1,13 +1,14 @@
 from .base import Base
 from .login import Login
 from .exceptions import *
-from .helper import Helper
 from .videos import Videos
 from .account_videos import AccVideos
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from rich.text import Text
+from rich.live import Live
 import time
 import os
 import pathvalidate
@@ -25,7 +26,8 @@ class Tiktok():
         self._wait = WebDriverWait(self._driver, 15)
         self._login = Login(self._email, self._password, self._driver)
 
-
+        self._live = Live(refresh_per_second=4)
+        self._text = None
 
     def search(self, search_term:str, amount:int|None = None, save:bool = False, save_folder:str|None = None, load_time:str = 10 ) -> Videos:
         """
@@ -57,10 +59,13 @@ class Tiktok():
         self._driver.execute_script("arguments[0].click();", search_button)
 
         time.sleep(5)
+        # start live updating for console
+        self._live.start()
+        self._text = self.__search_stylized_text()
         result =  self.__get_urls_base(save=save, save_path=save_folder, load_time=load_time, amount=amount)
         self._driver.quit()
         
-        return Videos(urls= result)
+        return Videos(urls=result)
     
     def accounts(self, accounts:list[str], amount:int|None = None, save:bool = False, save_folder:str|None = None, load_time:int = 10):
         """
@@ -94,7 +99,10 @@ class Tiktok():
             if save and not os.path.exists(save_folder): 
                 os.makedirs(save_folder)
                 
-            print(acct)
+            # print(acct)
+            self._live.start()
+            self._text = self.__account_stylized_text(acct)
+
             urls  = self.__get_urls_base (save=save, save_path=save_path, load_time=load_time, amount = amount)
             urls_of_accounts[acct]  = urls
         
@@ -106,7 +114,7 @@ class Tiktok():
     
     def __get_urls_base(self, save=False, save_path=None, load_time = 10, amount = None):
         """
-        scraping base fucntion for Url Class
+        scraping base function for Url Class
 
         """
 
@@ -133,7 +141,8 @@ class Tiktok():
 
             cur_urls  = len(posts)
 
-            print(f"Videos Found {len(urls)}")
+            # update the videos found
+            self._live.update(self._text + self.__stylized_number(len(urls)))
 
             #check if there is no more videos to load, note tiktok lowers responses speed over usage, this result in there being more videos to load but links elements were check before there loaded
             if cur_urls == prev_urls:
@@ -148,6 +157,9 @@ class Tiktok():
                 urls = urls[:amount]
                 break
         
+        # stop live updating
+        self._live.stop()
+        
         #save file
         if save:  
             # create directories in the path if they arent there
@@ -158,7 +170,7 @@ class Tiktok():
             with open(save_path, 'w')   as urls_file:
                 [urls_file.write(url + '\n') for url in urls]
                 print('Saved To: ' +  save_path)
-    
+
         return urls
           
     @property
@@ -315,6 +327,25 @@ class Tiktok():
             if not isinstance(load_time, int):
                 raise TypeError(f'save  must be integer but received {type(load_time).__name__}')
             
+
+    def __account_stylized_text(self, account:str) -> Text:
+        text = Text(f'{account}', style= 'bold underline green') 
+        text.append('~  ', style= 'cyan') 
+        text.append('Videos Found:', style= 'purple ')
+
+        return text
+    
+    def __search_stylized_text(self) -> Text:
+        text = Text(f'Search ', style= 'bold underline green') 
+        text.append('~  ', style= 'cyan') 
+        text.append('Videos Found:', style= 'purple')
+
+        return text
+    
+    def __stylized_number(amount:str) -> Text:
+        return Text(amount,  style='blue')
+
+
                       
             
 
