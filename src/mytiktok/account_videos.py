@@ -12,10 +12,10 @@ class AccVideos():
     def __init__(self, urls:dict[list]) -> None:
         self._urls:dict[list] = urls
         self._video_ids:list[str] = None
-        self._infos:list[dict]  = None
+        self.info:list[dict]  = None
         self._accounts:list[str] = None
 
-        self.__validate_urls_and_set_infos(urls) 
+        self.__validate_urls_and_set_info(urls) 
 
 
     def download(self, folder_name:str) -> None:
@@ -79,7 +79,7 @@ class AccVideos():
 
     @urls.setter
     def urls(self, urls:dict) -> None:
-        self.__validate_urls_and_set_infos(urls)
+        self.__validate_urls_and_set_info(urls)
         self._urls = urls
     
     @staticmethod
@@ -132,7 +132,7 @@ class AccVideos():
         video_ids:dict[list[str]] = {}
         temp_ids:list[str] = []
         infos:list[str] = []
-        account_infos:list[dict] = {}
+        account_info:list[dict] = {}
         urls_of_account:list[list] = []
         accounts:list  = urls.keys()
 
@@ -176,20 +176,20 @@ class AccVideos():
                 #get info 
                 info = tik_response.json()
                 infos.append(info)
-                account_infos[acct]  = infos
+                account_info[acct]  = infos
 
             # store the video ids
             video_ids[acct] = temp_ids
             temp_ids:list[str] = []
 
 
-        return accounts, video_ids, account_infos
+        return accounts, video_ids, account_info
 
-    def __validate_urls_and_set_infos(self, urls:dict) -> None:
+    def __validate_urls_and_set_info(self, urls:dict) -> None:
         """
         Validates the Urls and sets the video ID's and Info's attributes.
 
         """
-        self._accounts, self._video_ids, self._infos = self.__validate_urls(urls)
+        self._accounts, self._video_ids, self.info = self.__validate_urls(urls)
 
 

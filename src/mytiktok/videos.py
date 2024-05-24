@@ -14,8 +14,8 @@ class Videos():
     def __init__(self, urls:list[str]) -> None:
         self._urls = urls
         self._video_ids = None
-        self._infos = None
-        self.__validate_urls_and_set_infos(urls)
+        self.info = None
+        self.__validate_urls_and_set_info(urls)
 
        
     
@@ -73,7 +73,7 @@ class Videos():
 
     @urls.setter
     def urls(self, urls:list) -> None:
-        self.__validate_urls_and_set_infos(urls)
+        self.__validate_urls_and_set_info(urls)
         self._urls = urls
     
     @staticmethod
@@ -155,12 +155,12 @@ class Videos():
 
         return video_ids, infos
 
-    def __validate_urls_and_set_infos(self, urls) -> None:
+    def __validate_urls_and_set_info(self, urls) -> None:
         """
         Validates the Urls and sets the video ID's and Info's attributes.
 
         """
-        self._video_ids, self._infos = self.__validate_urls(urls)
+        self._video_ids, self.info = self.__validate_urls(urls)
 
            
         
