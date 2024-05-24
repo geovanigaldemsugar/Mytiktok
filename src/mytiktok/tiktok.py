@@ -89,7 +89,7 @@ class Tiktok():
         #go to account page, and scrape account video of links, save to dictionary 
         for acct in accounts:
  
-            save_path =  os.path.join(save_folder, 'Accounts', acct + '.txt')
+            save_path =  os.path.join(save_folder, acct + '.txt')
             account_page = 'https://www.tiktok.com/' + acct
             
             self._login.login(page=account_page) 
