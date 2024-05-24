@@ -18,9 +18,10 @@ class Tiktok():
 
         self._email = email
         self._password = password
-        self.__validate_email_and_password(email, password)
+        self._headless = headless
+        self.__validate_email_and_password_headless(email, password, self._headless)
 
-        self._driver = Base(headless=headless).driver() 
+        self._driver = Base(headless=self._headless).driver() 
         self._wait = WebDriverWait(self._driver, 15)
         self._login = Login(self._email, self._password, self._driver)
 
@@ -160,19 +161,19 @@ class Tiktok():
         return urls
           
     @property
-    def email_and_password(self) -> str:
-        return self._email, self._password
+    def email_and_password_headless(self) -> str:
+        return self._email, self._password, self._headless
 
-    @email_and_password.setter
-    def email_and_password(self, email:str, password:str) -> None:
-        self.__validate_email_and_password(email, password)
+    @email_and_password_headless.setter
+    def email_and_password(self, email:str, password:str, headless:bool) -> None:
+        self.__validate_email_and_password_headless(email, password, headless)
         self._email = email
         self._password = password
 
 
 
     @staticmethod
-    def __validate_email_and_password(email:str, password:str) -> None:
+    def __validate_email_and_password_headless(email:str, password:str, headless:bool) -> None:
         """
         Validates email and password.
         
@@ -197,6 +198,10 @@ class Tiktok():
         
         if not password:
             raise ValueError('Password is Empty please eneter your password')
+        
+        if not  isinstance(headless, bool):
+            raise TypeError(f'Headless must be a  but {type(headless).__name__} received')
+    
         
 
     @staticmethod
