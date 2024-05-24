@@ -36,21 +36,22 @@ class Helper():
         
         # check for os 
         if SYSTEM == 'Windows':
-            folder_names = ('chrome-mac-arm64', 'chromedriver-mac-arm64')
+            chrome = os.path.join('chrome-win64', 'chrome.exe')
+            driver = os.path.join(DATA_PATH, 'chromedriver-win64', 'chromedriver.exe')
 
         elif SYSTEM == 'Darwin':
             cpu_arch = platform.machine()
             # check for arm macs
             if cpu_arch  == 'arm64':
-                folder_names = ('chrome-mac-arm64', 'chromedriver-mac-arm64')
+                chrome = os.path.join(DATA_PATH,'chrome-mac-arm64', 'Google Chrome for Testing.app' , 'Contents', 'Frameworks', 'Google Chrome for Testing Framework.framework','Versions','125.0.6422.78', 'Google Chrome for Testing Framework')
+                driver = os.path.join(DATA_PATH, 'chromedriver-mac-arm64', 'chromedriver')
             else:
-                folder_names = ('chrome-mac-x64', 'chromedriver-mac-x64' )
-
+                chrome = os.path.join(DATA_PATH, 'chrome-mac-x64', 'Google Chrome for Testing.app' , 'Contents', 'Frameworks', 'Google Chrome for Testing Framework.framework','Versions','125.0.6422.78', 'Google Chrome for Testing Framework' , 'Google Chrome for Testing Framework')
+                driver = os.path.join(DATA_PATH, 'chromedriver-mac-x64', 'chromedriver' )
         elif SYSTEM == 'Linux' :
-            folder_names = ('chrome-linux64','chromedriver-linux64')
+            chrome = os.path.join(DATA_PATH, 'chrome-linux64', 'chrome')
+            driver = os.path.join(DATA_PATH, 'chromedriver-linux64', 'chromedriver')
 
-        chrome =  '/home/geo/Desktop/Mytiktok/src/mytiktok/Data/chrome-linux64/chrome'
-        driver = os.path.join(DATA_PATH, folder_names[1], 'chromedriver')
 
         # check if  chrome adn driver are installed
         if os.path.exists(chrome) and os.path.exists(driver):
