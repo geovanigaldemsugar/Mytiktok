@@ -329,14 +329,14 @@ class Tiktok():
 
     def __account_stylized_text(self, account:str) -> Text:
         text = Text(f'{account}', style= 'bold underline green') 
-        text.append('~  ', style= 'cyan') 
+        text.append(' ~ ', style= 'cyan') 
         text.append('Videos Found:', style= 'purple ')
 
         return text
     
     def __search_stylized_text(self) -> Text:
-        text = Text(f'Search ', style= 'bold underline green') 
-        text.append('~  ', style= 'cyan') 
+        text = Text(f'Search', style= 'bold underline green') 
+        text.append(' ~ ', style= 'cyan') 
         text.append('Videos Found:', style= 'purple')
 
         return text

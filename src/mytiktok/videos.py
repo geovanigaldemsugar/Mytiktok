@@ -4,7 +4,7 @@ from .helper import Helper
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from rich.live import Live
+from rich.console import Console
 from rich.text import Text
 import requests
 import os
@@ -18,7 +18,7 @@ class Videos():
         self._video_ids = None
         self.info = None
         self.__validate_urls_and_set_info(urls)
-       
+        self._console = Console()
 
        
     
@@ -38,7 +38,8 @@ class Videos():
             self.__validate_path(folder_name)
               
             driver = Base(headless=True).driver()
-            
+            self._console.print(self.__videos_stylized_text(len(self._urls)))
+
             # download each video
             for url,video_id in zip(self._urls, self._video_ids):
 
@@ -165,11 +166,14 @@ class Videos():
         """
         self._video_ids, self.info = self.__validate_urls(urls)
 
-    def __videos_stylized_text(self, amount:int, total:int) -> Text:
-        text = Text(f'Downloading ', style= 'bold black on white') 
-        text.append(f'{amount}', style='white on black')
-        text.append(' of ', style= 'purple') 
-        text.append(f'{total}', style= 'cyan')
+    def __videos_stylized_text(self, total:int) -> Text:
+        text = Text(f'Downloading', style= 'bold green underline') 
+        text.append(' ~ ', style='cyan')
+        text.append('Videos', style='purple')
+        text.append(':', style='cyan')
+        text.append(f'{total}', style='blue')
+        return text
+ 
 
            
         

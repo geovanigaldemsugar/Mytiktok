@@ -3,6 +3,8 @@ from .helper import Helper
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from rich.console import Console
+from rich.text import Text
 import requests
 import os
 import pathvalidate
@@ -16,6 +18,8 @@ class AccVideos():
         self._accounts:list[str] = None
 
         self.__validate_urls_and_set_info(urls) 
+        self._console = Console()
+
 
 
     def download(self, folder_name:str) -> None:
@@ -39,6 +43,7 @@ class AccVideos():
             for acct in self._accounts:      
 
                 # download each video
+                self._console.print(self.__account_videos_stylized_text(acct, len(self._urls[acct])))
                 for url, video_id in zip(self._urls[acct], self._video_ids[acct]):
 
                     #go to tiktok video post
@@ -193,3 +198,11 @@ class AccVideos():
         self._accounts, self._video_ids, self.info = self.__validate_urls(urls)
 
 
+    def __account_videos_stylized_text(self, account:str, total:int) -> Text:
+        text = Text(f'Downloading', style= 'purple underline') 
+        text.append(' ~ ', style='cyan')
+        text.append(f'{account}', style= 'green underline') 
+        text.append(':', style='cyan')
+        text.append(f'{total}', style='blue')
+        return text
+ 
