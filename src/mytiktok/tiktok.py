@@ -57,7 +57,7 @@ class Tiktok():
         self._driver.execute_script("arguments[0].click();", search_button)
 
         time.sleep(5)
-        result =  self.__get_urls_base(save=save, save_path=save_folder, load_time=load_time, amnt=amount)
+        result =  self.__get_urls_base(save=save, save_path=save_folder, load_time=load_time, amount=amount)
         self._driver.quit()
         
         return Videos(urls= result)
@@ -95,7 +95,7 @@ class Tiktok():
                 os.makedirs(save_folder)
                 
             print(acct)
-            urls  = self.__get_urls_base (save=save, save_path=save_path, load_time=load_time, amnt = amount)
+            urls  = self.__get_urls_base (save=save, save_path=save_path, load_time=load_time, amount = amount)
             urls_of_accounts[acct]  = urls
         
         #finished scraped now quitting
@@ -104,7 +104,7 @@ class Tiktok():
         return AccVideos(urls=urls_of_accounts)
         
     
-    def __get_urls_base(self, save=False, save_path=None, load_time = 10, amnt = None):
+    def __get_urls_base(self, save=False, save_path=None, load_time = 10, amount = None):
         """
         scraping base fucntion for Url Class
 
@@ -143,9 +143,9 @@ class Tiktok():
             prev_urls = cur_urls
 
             #limiter
-            if amnt is not None and cur_urls >= amnt:
+            if amount is not None and cur_urls >= amount:
                 #url scraped sometimes overshoots, im just getiing rid of excess data
-                urls = urls[:amnt]
+                urls = urls[:amount]
                 break
         
         #save file
