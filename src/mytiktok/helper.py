@@ -36,7 +36,7 @@ class Helper():
         
         # check for os 
         if SYSTEM == 'Windows':
-            chrome = os.path.join('chrome-win64', 'chrome.exe')
+            chrome = os.path.join(DATA_PATH, 'chrome-win64', 'chrome.exe')
             driver = os.path.join(DATA_PATH, 'chromedriver-win64', 'chromedriver.exe')
 
         elif SYSTEM == 'Darwin':
