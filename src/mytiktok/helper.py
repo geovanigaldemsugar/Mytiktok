@@ -83,7 +83,7 @@ class Helper():
 
         elif SYSTEM == 'Linux' :
             browser_url = 'https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.76/linux64/chrome-linux64.zip'
-            driver_url  = '	https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.76/linux64/chromedriver-linux64.zip'
+            driver_url  = 'https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.76/linux64/chromedriver-linux64.zip'
 
         # parse the names from the urls and create thier paths
         browser_file_name = browser_url.split('/')[-1]
