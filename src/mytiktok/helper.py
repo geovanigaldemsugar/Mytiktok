@@ -5,6 +5,12 @@ from zipfile import ZipFile
 from tqdm import tqdm
 
 class Helper():
+    # Determine the directory where the package is installed
+    PACKAGE_PATH = os.path.dirname(os.path.abspath(__file__))
+    DATA_PATH = os.path.join(PACKAGE_PATH, 'Data')
+    SYSTEM = platform.system()
+    COOKIES_PATH =  os.path.join(DATA_PATH, 'cookies.pkl') 
+
 
     @staticmethod
     def download(response:requests.Response, filepath:str, title:str, color:str ='magenta', disable=False) -> None:
@@ -20,6 +26,9 @@ class Helper():
 
         
         """
+
+
+     
         format = '{l_bar}{bar}| {n_fmt}/{total_fmt}'
 
         # Send the GET request to download the video
@@ -35,22 +44,22 @@ class Helper():
         """       Checks if Chrome and Chromedriver is intalled and returns a dictionary containing thier PATHS, wither both was installed    """
         
         # check for os 
-        if SYSTEM == 'Windows':
-            chrome = os.path.join(DATA_PATH, 'chrome-win64', 'chrome.exe')
-            driver = os.path.join(DATA_PATH, 'chromedriver-win64', 'chromedriver.exe')
+        if Helper.SYSTEM == 'Windows':
+            chrome = os.path.join(Helper.DATA_PATH, 'chrome-win64', 'chrome.exe')
+            driver = os.path.join(Helper.DATA_PATH, 'chromedriver-win64', 'chromedriver.exe')
 
-        elif SYSTEM == 'Darwin':
+        elif Helper.SYSTEM == 'Darwin':
             cpu_arch = platform.machine()
             # check for arm macs
             if cpu_arch  == 'arm64':
-                chrome = os.path.join(DATA_PATH,'chrome-mac-arm64', 'Google Chrome for Testing.app' , 'Contents', 'Frameworks', 'Google Chrome for Testing Framework.framework','Versions','125.0.6422.78', 'Google Chrome for Testing Framework')
-                driver = os.path.join(DATA_PATH, 'chromedriver-mac-arm64', 'chromedriver')
+                chrome = os.path.join(Helper.DATA_PATH,'chrome-mac-arm64', 'Google Chrome for Testing.app' , 'Contents', 'Frameworks', 'Google Chrome for Testing Framework.framework','Versions','125.0.6422.78', 'Google Chrome for Testing Framework')
+                driver = os.path.join(Helper.DATA_PATH, 'chromedriver-mac-arm64', 'chromedriver')
             else:
-                chrome = os.path.join(DATA_PATH, 'chrome-mac-x64', 'Google Chrome for Testing.app' , 'Contents', 'Frameworks', 'Google Chrome for Testing Framework.framework','Versions','125.0.6422.78', 'Google Chrome for Testing Framework' , 'Google Chrome for Testing Framework')
-                driver = os.path.join(DATA_PATH, 'chromedriver-mac-x64', 'chromedriver' )
-        elif SYSTEM == 'Linux' :
-            chrome = os.path.join(DATA_PATH, 'chrome-linux64', 'chrome')
-            driver = os.path.join(DATA_PATH, 'chromedriver-linux64', 'chromedriver')
+                chrome = os.path.join(Helper.DATA_PATH, 'chrome-mac-x64', 'Google Chrome for Testing.app' , 'Contents', 'Frameworks', 'Google Chrome for Testing Framework.framework','Versions','125.0.6422.78', 'Google Chrome for Testing Framework' , 'Google Chrome for Testing Framework')
+                driver = os.path.join(Helper.DATA_PATH, 'chromedriver-mac-x64', 'chromedriver' )
+        elif Helper.SYSTEM == 'Linux' :
+            chrome = os.path.join(Helper.DATA_PATH, 'chrome-linux64', 'chrome')
+            driver = os.path.join(Helper.DATA_PATH, 'chromedriver-linux64', 'chromedriver')
 
 
         # check if  chrome and driver are installed
@@ -67,11 +76,11 @@ class Helper():
         '''uses Chrome for testing since chrome browser binaries are easily avialable for WINDOWS'''
 
         # check for os 
-        if SYSTEM == 'Windows':
+        if Helper.SYSTEM == 'Windows':
             browser_url = 'https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.76/win64/chrome-win64.zip'
             driver_url  =  'https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.76/win64/chromedriver-win64.zip'
         
-        elif SYSTEM == 'Darwin':
+        elif Helper.SYSTEM == 'Darwin':
             cpu_arch = platform.machine()
             # check for arm macs
             if cpu_arch  == 'arm64':
@@ -81,15 +90,15 @@ class Helper():
                 browser_url = 'https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.76/mac-x64/chrome-mac-x64.zip'
                 driver_url = 'https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.76/mac-x64/chromedriver-mac-x64.zip'
 
-        elif SYSTEM == 'Linux' :
+        elif Helper.SYSTEM == 'Linux' :
             browser_url = 'https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.76/linux64/chrome-linux64.zip'
             driver_url  = 'https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.76/linux64/chromedriver-linux64.zip'
 
         # parse the names from the urls and create thier paths
         browser_file_name = browser_url.split('/')[-1]
         driver_file_name = driver_url.split('/')[-1]
-        browser_path  = os.path.join(DATA_PATH, browser_file_name)
-        driver_path = os.path.join(DATA_PATH, driver_file_name)
+        browser_path  = os.path.join(Helper.DATA_PATH, browser_file_name)
+        driver_path = os.path.join(Helper.DATA_PATH, driver_file_name)
 
         # download the compressed files
         browser_response = requests.get(browser_url, stream=True)
@@ -98,8 +107,8 @@ class Helper():
         Helper.download(driver_response, driver_path, title='Downloading Chrome Driver', color='green' )
  
         # extract
-        Helper.extract_zip_with_permissions(browser_path, DATA_PATH)
-        Helper.extract_zip_with_permissions(driver_path, DATA_PATH)
+        Helper.extract_zip_with_permissions(browser_path, Helper.DATA_PATH)
+        Helper.extract_zip_with_permissions(driver_path, Helper.DATA_PATH)
 
         # remove downloaded files       
         os.remove(browser_path)
@@ -153,15 +162,7 @@ class Helper():
 
 
 # CONSTANTS
-CAPTCHA = False
-DIR_PATH  = os.path.dirname(__file__)
-DATA_PATH = os.path.join(DIR_PATH, 'Data')
-COOKIES_PATH =  os.path.join(DATA_PATH, 'cookies.pkl')
-SYSTEM = platform.system()
-RESULT = Helper.is_chrome_installed()
-CHROME = RESULT.get('chrome')
-DRIVER = RESULT.get('driver')
-INSTALLED = RESULT.get('installed')
+
 
 if __name__ == '__main__':
     # print(dir(Helper))
@@ -171,7 +172,7 @@ if __name__ == '__main__':
     # print(Helper._Helper__cookies_exist(cookies_path))
     # print(Helper._Helper__cookies_expired(cookies_path))
     # print(Helper.chrome_installed())
-    if not INSTALLED: Helper.install_chrome()
+    if not Helper.is_chrome_installed().get('installed'): Helper.install_chrome()
     # print(Helper.get_accounts())
     # print(Helper.get_hashtags())
     # print(Helper.valid_account('@calebbpartain'))

@@ -20,7 +20,8 @@ class Base():
         # proxy = 'http://185.217.143.96:80'
 
         # install chrome and chrome driver
-        if not helper.INSTALLED:
+        self.INSTALL_INFO = helper.Helper.is_chrome_installed()
+        if not self.INSTALL_INFO.get('installed'):
             helper.Helper.install_chrome()
                 
 
@@ -29,7 +30,7 @@ class Base():
         options.add_argument('--no-sandbox') #prevents slenium from not accessing system resources
         # options.add_argument(f'--proxy-server={proxy}')
         # options.add_argument(f'user-agent={random_ua}')
-        options.binary_location = helper.CHROME 
+        options.binary_location = self.INSTALL_INFO.get('chrome') 
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_argument('--disable-gpu')
         options.add_argument("--disable-dev-shm-usage")  # Prevents crashes in Docker
@@ -43,7 +44,7 @@ class Base():
 
     def driver(self):
 
-        service = Service(executable_path = helper.DRIVER)
+        service = Service(executable_path = self.INSTALL_INFO.get('driver'))
         self.driver = uc.Chrome( Service=service, use_subprocess=False, options = self.options)
         return self.driver
     

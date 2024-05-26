@@ -16,8 +16,8 @@ class Login():
         self._password = password
         self._driver  = driver
         self._wait = WebDriverWait(self._driver, 10)
-        self._COOKIES_PATH = helper.COOKIES_PATH
-        self._DATA_PATH = helper.DATA_PATH
+        self._COOKIES_PATH = helper.Helper.COOKIES_PATH
+        self._DATA_PATH = helper.Helper.DATA_PATH
 
 
     def login(self, page:str = 'https://www.tiktok.com/') -> None:
