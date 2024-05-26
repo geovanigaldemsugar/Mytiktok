@@ -16,8 +16,7 @@ The package itself uses undetected-chromedriver for web automation which control
 So implementing Retries is important if you are planning on using this package for a project.
 
 > [!NOTE]
-> I recommend using `headless = True` after you've already passed Login and generated cookies, and after you can use `headless = False` but alternatively you can just always set `headless = True`
-
+> I recommend using `headless = True` on a first scrape, completing the captcha manually, after  a successful login, cookies are saved for future adn then you can use `headless = False` but alternatively you can just always set `headless = True` and schedule retry attempts if login failed.
 
 
 
@@ -37,10 +36,10 @@ tiktok  = Tiktok(email=email, password=password)
 
 #returns a videos object
 videos  = tiktok.search(search_term=search_term, amnt=14)
-print(videos.info_list)
+print(videos.info)
 
 ``` 
-### Get Videos of an Accounts Video
+### Get Videos of an Account 
 
 ```python 
 from mytiktok import Tiktok
@@ -61,8 +60,8 @@ accounts  = [
 tiktok  = Tiktok(email=email, password=password)
 
 #returns a videos object
-videos  = tiktok.accounts(accounts=accounts, amnt=14)
-print(videos.info_dict)
+videos  = tiktok.accounts(accounts=accounts, amnt=5)
+print(videos.info)
 
 ```
 ### Downloading Videos
@@ -105,20 +104,18 @@ videos.download(folder_name='Test_videos')
 ## Limitations
 - **Uses Chrome Instances**
 - **Login attempts Frequently Fail**
-- **Download attempts can fail from time to time**
+- **Downloads are quite slow, it has improved**
 
 ## Issues
 - [x] https://github.com/geovanigaldemsugar/Mytiktok/issues/1
 - [ ] Slow
+- [ ] For some reason this package works alot worse on windows
 
-## Imporvements Coming Soon
-- [ ] Scraping Statistics
-- [] Faster Scrape times
-- [x] Chrome Handling Done by the Package
+## Imporvements 
+- Faster Download times
+- Chrome Handling Done by the Package
 
- 
-> [!NOTE]
-> If using this package with visual output is important to your needs try running your script in a Docker
+> 
 
 > [!IMPORTANT]
-> Proxing has not been implemented so there is a possibility of snaptik.app blocking you and or slowing down your connection but just don't download excessively, keep the rates low and you should be fine
+> Proxing has not been implemented so there is a possibility of tiktok slowing down your coonection or blocking you just don't download too excessively, and you'll be fine.

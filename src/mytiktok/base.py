@@ -43,6 +43,6 @@ class Base():
     def driver(self):
 
         service = Service(executable_path = helper.DRIVER)
-        self.driver = uc.Chrome( Service=service, options = self.options)
+        self.driver = uc.Chrome( Service=service, use_subprocess=False, options = self.options)
         return self.driver
     
