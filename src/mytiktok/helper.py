@@ -53,7 +53,7 @@ class Helper():
             driver = os.path.join(DATA_PATH, 'chromedriver-linux64', 'chromedriver')
 
 
-        # check if  chrome adn driver are installed
+        # check if  chrome and driver are installed
         if os.path.exists(chrome) and os.path.exists(driver):
            installed = True
         else:
@@ -62,7 +62,7 @@ class Helper():
 
         return {'chrome':chrome, 'driver':driver, 'installed':installed }
 
-            
+    @staticmethod        
     def install_chrome() -> None:
         '''uses Chrome for testing since chrome browser binaries are easily avialable for WINDOWS'''
 
