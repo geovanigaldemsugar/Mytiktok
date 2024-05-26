@@ -32,6 +32,7 @@ class Base():
         options.binary_location = helper.CHROME 
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_argument('--disable-gpu')
+        options.add_argument("--disable-dev-shm-usage")  # Prevents crashes in Docker
 
 
         # set driver to headless mode
