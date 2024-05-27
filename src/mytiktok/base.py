@@ -21,6 +21,7 @@ class Base():
 
         # install chrome and chrome driver
         self.INSTALL_INFO = helper.Helper.is_chrome_installed()
+        print(self.INSTALL_INFO.get('installed'))
         if not self.INSTALL_INFO.get('installed'):
             helper.Helper.install_chrome()
                 
