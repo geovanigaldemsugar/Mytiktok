@@ -49,3 +49,7 @@ class Base():
         self.driver = uc.Chrome( Service=service, use_subprocess=False, options = self.options)
         return self.driver
     
+
+
+if __name__ == '__main__':
+    pass
